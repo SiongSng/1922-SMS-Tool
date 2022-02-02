@@ -12,7 +12,6 @@ void main() {
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -222,7 +221,7 @@ class _HomePageState extends State<HomePage> {
                         icon: Icon(flashlightOn
                             ? Icons.flashlight_on
                             : Icons.flashlight_off),
-                        label: Text(flashlightOn ? "關閉閃光燈" : "開啟閃光燈")),
+                        label: Text(flashlightOn ? "關閉手電筒" : "開啟手電筒")),
                     TextButton.icon(
                         onPressed: () {
                           launch("sms:1922");
