@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:telephony/telephony.dart';
@@ -15,13 +16,12 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '1922 實聯制掃描器',
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: Colors.blue,
-      ),
-      home: const HomePage(),
-    );
+        title: '實聯制掃描器',
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          primarySwatch: Colors.blue,
+        ),
+        home: const HomePage());
   }
 }
 
@@ -70,8 +70,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<bool> _send1922SMS(String message) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
     if (Platform.isIOS) {
       /// IOS 版尚未支援直接在背景發送訊息
       await launch('sms:1922?body=$message');
@@ -104,7 +102,16 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             icon: const Icon(Icons.info),
             onPressed: () {
-              // TODO: about page
+              showAboutDialog(
+                  context: context,
+                  applicationIcon: Image.asset("assets/logo.png"),
+                  children: [
+                    IconButton(
+                        onPressed: () =>
+                            launch("https://github.com/SiongSng/1922-SMS-Tool"),
+                        tooltip: "GitHub 原始碼",
+                        icon: const FaIcon(FontAwesomeIcons.github))
+                  ]);
             },
             tooltip: "關於本軟體",
           )

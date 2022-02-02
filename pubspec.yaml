@@ -17,6 +17,8 @@ dependencies:
   qr_code_scanner: ^0.6.1
   url_launcher: ^6.0.18
   telephony: ^0.1.4
+  font_awesome_flutter: ^9.2.0
+  flutter_native_splash: ^2.0.1+1
 
 dev_dependencies:
   flutter_test:
@@ -26,3 +28,11 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/logo.png
+
+flutter_native_splash:
+  color: "#000000"
+  image: assets/big_logo.png
+
+  branding_mode: bottom
