@@ -10,5 +10,11 @@
 - 支援查看簡訊實聯制發送紀錄
 - 開放原始碼的自由軟體、無任何廣告
 
+## 截圖
+### 掃描界面
+![1](https://github.com/SiongSng/1922-SMS-Tool/blob/main/screenshots/1.png?raw=true)
+### 偵測 QR Code 是否有錯誤
+![2](https://github.com/SiongSng/1922-SMS-Tool/blob/main/screenshots/2.png?raw=true)
+
 ## 開發者
 [SiongSng (菘菘)](https://github.com/SiongSng)

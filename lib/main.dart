@@ -76,8 +76,12 @@ class _HomePageState extends State<HomePage> {
       return true;
     } else {
       final Telephony telephony = Telephony.instance;
-
-      bool permissionsGranted = await telephony.requestSmsPermissions ?? false;
+      bool permissionsGranted;
+      try {
+        permissionsGranted = await telephony.requestSmsPermissions ?? false;
+      } catch (e) {
+        permissionsGranted = false;
+      }
 
       if (permissionsGranted) {
         await telephony.sendSms(to: "1922", message: message);
@@ -97,7 +101,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("台灣 1922 實聯制掃描器"),
+        title: const Text("1922 實聯制掃描器"),
         actions: [
           IconButton(
             icon: const Icon(Icons.info),
@@ -208,7 +212,7 @@ class _HomePageState extends State<HomePage> {
                               TextStyle(color: Colors.red, fontSize: fontSize));
                     }
                   } else {
-                    return Text("請將實聯制 QR Code 放置於框內掃描",
+                    return Text("請將實聯制 QR Code 放置於紅框內掃描",
                         style: TextStyle(fontSize: fontSize));
                   }
                 }),
