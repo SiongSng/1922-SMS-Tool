@@ -129,17 +129,14 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Builder(builder: (context) {
                   double fontSize = 20;
-                  if (result != null) {
+                  String? code = result?.code;
+
+                  if (result != null && lastCode != code) {
                     String spilt = "smsto:1922:";
-                    String? code = result?.code;
                     String? formattedCode = code?.replaceFirst(spilt, "");
                     Text successText = Text("實聯制簡訊發送成功！",
                         style:
                             TextStyle(fontSize: fontSize, color: Colors.green));
-
-                    if (lastCode == code) {
-                      return successText;
-                    }
 
                     if (code != null &&
                         code.startsWith(spilt) &&
