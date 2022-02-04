@@ -134,6 +134,7 @@ class _HomePageState extends State<HomePage> {
                 Builder(builder: (context) {
                   double fontSize = 20;
                   String code = (result?.code ?? "").toLowerCase();
+                  
                   if (result != null && lastCode != code) {
                     String spilt = "smsto:1922:";
                     String? formattedCode = code.replaceFirst(spilt, "");
