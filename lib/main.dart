@@ -133,7 +133,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Builder(builder: (context) {
                   double fontSize = 20;
-                  String code = result?.code ?? "";
+                  String code = result?.code ?? "".toLowerCase();
 
                   if (result != null && lastCode != code) {
                     String spilt = "smsto:1922:";
@@ -141,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                     Text successText = Text("實聯制簡訊發送成功！",
                         style:
                             TextStyle(fontSize: fontSize, color: Colors.green));
-                    if (code.toLowerCase().startsWith(spilt)) {
+                    if (code.startsWith(spilt)) {
                       lastCode = code;
 
                       WidgetsBinding.instance!
