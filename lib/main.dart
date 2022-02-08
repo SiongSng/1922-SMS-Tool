@@ -70,11 +70,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<bool> _send1922SMS(String message) async {
-    if (Platform.isIOS) {
-      /// IOS 版尚未支援直接在背景發送訊息
-      await launch('sms:1922?body=$message');
-      return true;
-    } else {
+    if (Platform.isAndroid) {
       final Telephony telephony = Telephony.instance;
       bool permissionsGranted;
       try {
@@ -88,6 +84,10 @@ class _HomePageState extends State<HomePage> {
       }
 
       return permissionsGranted;
+    } else {
+      /// IOS 與網頁版尚未支援直接在背景發送訊息
+      await launch('sms:1922?body=$message');
+      return true;
     }
   }
 
@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                 Builder(builder: (context) {
                   double fontSize = 20;
                   String code = (result?.code ?? "").toLowerCase();
-                  
+
                   if (result != null && lastCode != code) {
                     String spilt = "smsto:1922:";
                     String? formattedCode = code.replaceFirst(spilt, "");
